@@ -1,11 +1,15 @@
 #!/bin/bash
 OWNER=$1
 REPO=$2
-WORKFLOW_NAME=$3
+BRANCH=$3
+WORKFLOW_NAME=$4
+
 
 # Get the workflow YAML content
 WORKFLOW_YAML=$(curl -X GET  -s -H "Accept: application/vnd.github+json" \
-https://api.github.com/repos/$OWNER/$REPO/contents/.github/workflows/$WORKFLOW_NAME)
+https://raw.githubusercontent.com/$OWNER/$REPO/$BRANCH/.github/workflows/$WORKFLOW_NAME)
+
+echo $WORKFLOW_YAML
 
 # Validate the workflow YAML
 #Check if the workflow has two jobs named testing and deployment
