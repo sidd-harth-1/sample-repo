@@ -1,0 +1,13 @@
+name: Test Workflow
+on:
+  push:
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Testing......
+
+  deploying:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Deploying......
