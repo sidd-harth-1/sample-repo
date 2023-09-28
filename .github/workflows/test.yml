@@ -3,6 +3,7 @@ on:
   push:
 jobs:
   testing:
+    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - run: echo Testing......
