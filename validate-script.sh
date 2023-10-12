@@ -6,7 +6,7 @@ WORKFLOW_NAME=$4
 
 #  Get the workflow YAML content
 WORKFLOW_YAML=$(curl -X GET  -sk -H "Accept: application/vnd.github+json" \
-https://raw.githubusercontent.com/$OWNER/$REPO/$BRANCH/.github/workflows/$WORKFLOW_NAME)
+https://raw.githubusercontent.com/$OWNER/$REPO/$BRANCH/.github/workflows/$WORKFLOW_NAME?token=$(date +%s))
 
 # Check if the workflow has two jobs named testing and deployment
 if ! (yq '.jobs | keys' <<< $WORKFLOW_YAML  |  grep -q 'testing') && (yq '.jobs | keys' <<< $WORKFLOW_YAML |  grep -q 'deploying'); then
